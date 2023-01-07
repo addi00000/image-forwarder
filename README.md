@@ -7,7 +7,7 @@ API that takes a link to an image file and relays the data such that the end use
 #### Get an image
 
 ```http
-  GET /image/?url=${url}
+  GET /image?url=${url}
 ```
 
 | Parameter | Type     | Description                                |
