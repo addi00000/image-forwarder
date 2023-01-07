@@ -16,12 +16,17 @@ app.get('/image', (req, res) => {
     return res.status(400).send('No url provided')
   }
 
+  if (!/^https?:\/\//.test(url)) {
+    return res.status(400).send('Invalid url')
+  }
+
   request.get({ url, encoding: null }, (error, response, body) => {
     if (error) {
       if (error.code === 'ENOTFOUND') {
         return res.status(404).send('URL is dead or invalid')
       }
 
+      console.error(error)
       return res.status(500).send('Server error')
     }
 
