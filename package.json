@@ -1,0 +1,23 @@
+{
+  "name": "image-forwarder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon --exec node .",
+    "lint": "eslint \"*.{js,json}\" --fix",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "eslint": "^8.0.1",
+    "eslint-config-standard": "latest",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "express": "^4.18.2",
+    "image-type": "^4.1.0",
+    "prettier": "^2.7.1",
+    "request": "^2.88.2"
+  }
+}
