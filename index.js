@@ -18,7 +18,11 @@ app.get('/image', (req, res) => {
 
   request.get({ url, encoding: null }, (error, response, body) => {
     if (error) {
-      return res.status(500).send(error)
+      if (error.code === 'ENOTFOUND') {
+        return res.status(404).send('URL is dead or invalid')
+      }
+
+      return res.status(500).send('Server error')
     }
 
     if (response.statusCode < 200 || response.statusCode >= 300) {

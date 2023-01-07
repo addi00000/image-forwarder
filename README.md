@@ -1,4 +1,3 @@
-
 # Image Forwarder
 
 API that takes a link to an image file and relays the data such that the end user cannont be logged by the origin server
@@ -6,13 +5,14 @@ API that takes a link to an image file and relays the data such that the end use
 ## API Reference
 
 #### Get an image
+
 ```http
   GET /image/?url=${url}
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `url` | `string` | **Required**. The direct link to the image |
+| Parameter | Type     | Description                                |
+| :-------- | :------- | :----------------------------------------- |
+| `url`     | `string` | **Required**. The direct link to the image |
 
 ## Run Locally
 
