@@ -19,13 +19,13 @@ API that takes a link to an image file and relays the data such that the end use
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/addi00000/image-forwarder
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd image-forwarder
 ```
 
 Install dependencies
