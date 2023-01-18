@@ -1,9 +1,11 @@
 const express = require('express')
 const request = require('request')
 const imageType = require('image-type')
+const LRU = require("lru-cache")
 
 const app = express()
 const port = process.env.PORT || 3000
+const cache = new LRU({ max: 500, maxAge: 1000 * 60 * 60 })
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -18,6 +20,13 @@ app.get('/image', (req, res) => {
 
   if (!/^https?:\/\//.test(url)) {
     return res.status(400).send('Invalid url')
+  }
+
+  const cachedImage = cache.get(url)
+  if (cachedImage) {
+    res.set('Content-Type', cachedImage.type)
+    res.send(cachedImage.data)
+    return
   }
 
   request.get({ url, encoding: null }, (error, response, body) => {
@@ -41,6 +50,8 @@ app.get('/image', (req, res) => {
 
       res.set('Content-Type', type.mime)
       res.send(body)
+
+      cache.set(url, { data: body, type: type.mime })
     })
   })
 })
